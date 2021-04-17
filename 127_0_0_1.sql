@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2021 at 09:01 AM
+-- Generation Time: Apr 17, 2021 at 10:56 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -51,6 +51,7 @@ INSERT INTO `admin` (`admin_id`, `admin_fullname`, `admin_email`, `admin_passwor
 
 CREATE TABLE `users` (
   `id` int(255) NOT NULL,
+  `usertype` varchar(255) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -60,8 +61,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `password`) VALUES
-(1, 'divine crus', 'che@email', 'che@email');
+INSERT INTO `users` (`id`, `usertype`, `fullname`, `email`, `password`) VALUES
+(1, '', 'narence valencia', 'nars@email', 'nars@email'),
+(2, 'employee', 'jr torres', 'jr@email', 'jr@email'),
+(3, 'student', 'cherilyn cruz', 'che@email', 'che@email'),
+(4, 'visitor', 'narence valencia', 'nar3nce@gmail.com', 'nar3nce@gmail.com'),
+(5, 'student', 'louie', 'louie@email', 'louie@email');
 
 -- --------------------------------------------------------
 
@@ -91,15 +96,6 @@ CREATE TABLE `user_appointments` (
   `radio11` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_appointments`
---
-
-INSERT INTO `user_appointments` (`id`, `user_id`, `date_submitted`, `time_sched`, `nature`, `purpose`, `department`, `date`, `radio1`, `radio2`, `radio3`, `radio4`, `radio5`, `radio6`, `radio7`, `radio8`, `radio9`, `radio10`, `radio11`, `status`) VALUES
-(1, 1, 'a', '8am - 11am', 'Official', 'secret', 'cs', '2021-03-22', 'yes1', 'no2', 'no3', 'no4', 'no5', 'no6', 'no7', 'no8', 'no9', 'no10', 'no11', 'Accepted'),
-(2, 1, 'a', '1pm - 5pm', 'Personal', '2', 'ba', '2021-03-22', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'Accepted'),
-(3, 1, 'a', '8am - 11am', 'Personal', 'ttae', 'cs', '2021-03-21', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'Rejected');
 
 -- --------------------------------------------------------
 
@@ -133,15 +129,19 @@ CREATE TABLE `user_emergency_contact` (
 --
 
 INSERT INTO `user_emergency_contact` (`id`, `e_user_id`, `e_fullname`, `e_address`, `e_phone`, `e_relationship`) VALUES
-(1, 1, ' ', ' ', ' ', ' ');
+(1, 1, ' ', ' ', ' ', ' '),
+(2, 2, ' ', ' ', ' ', ' '),
+(3, 3, ' ', ' ', ' ', ' '),
+(4, 4, ' ', ' ', ' ', ' '),
+(5, 5, ' ', ' ', ' ', ' ');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_informarion`
+-- Table structure for table `user_information`
 --
 
-CREATE TABLE `user_informarion` (
+CREATE TABLE `user_information` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `address` varchar(255) NOT NULL,
@@ -152,11 +152,37 @@ CREATE TABLE `user_informarion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_informarion`
+-- Dumping data for table `user_information`
 --
 
-INSERT INTO `user_informarion` (`id`, `user_id`, `address`, `phone`, `gender`, `age`, `citizenship`) VALUES
-(1, 1, ' ', ' ', ' ', ' ', ' ');
+INSERT INTO `user_information` (`id`, `user_id`, `address`, `phone`, `gender`, `age`, `citizenship`) VALUES
+(1, 1, ' ', ' ', ' ', ' ', ' '),
+(2, 2, ' ', ' ', ' ', ' ', ' '),
+(3, 3, ' ', ' ', ' ', ' ', ' '),
+(4, 4, ' ', ' ', ' ', ' ', ' '),
+(5, 5, ' ', ' ', ' ', ' ', ' ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitors`
+--
+
+CREATE TABLE `visitors` (
+  `id` int(255) NOT NULL,
+  `visitor_id` int(255) NOT NULL,
+  `date_visited` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `visitors`
+--
+
+INSERT INTO `visitors` (`id`, `visitor_id`, `date_visited`) VALUES
+(1, 2, '2021-04-17'),
+(2, 4, '2021-04-17'),
+(3, 2, '2021-04-17'),
+(4, 5, '2021-04-17');
 
 --
 -- Indexes for dumped tables
@@ -193,9 +219,15 @@ ALTER TABLE `user_emergency_contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_informarion`
+-- Indexes for table `user_information`
 --
-ALTER TABLE `user_informarion`
+ALTER TABLE `user_information`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `visitors`
+--
+ALTER TABLE `visitors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -212,31 +244,37 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_appointments`
 --
 ALTER TABLE `user_appointments`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_attachment`
 --
 ALTER TABLE `user_attachment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_emergency_contact`
 --
 ALTER TABLE `user_emergency_contact`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `user_informarion`
+-- AUTO_INCREMENT for table `user_information`
 --
-ALTER TABLE `user_informarion`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `user_information`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `visitors`
+--
+ALTER TABLE `visitors`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

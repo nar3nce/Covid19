@@ -27,6 +27,7 @@
                with font-awesome or any other icon font library -->
           
                <li class="nav-item has-treeview menu-open">
+            
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -35,6 +36,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="myqrcode.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>My QRCODE</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="appointment.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -47,6 +54,7 @@
                   <p>My Schedule</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           

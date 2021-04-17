@@ -76,7 +76,7 @@
               
               $uid = $row['id'];
              
-              $sql1 = "SELECT * FROM `user_informarion` WHERE user_id = '$uid' ";
+              $sql1 = "SELECT * FROM `user_information` WHERE user_id = '$user_id' ";
               $result1 = $conn->query($sql1);
               $row1 = $result1->fetch_array();
              

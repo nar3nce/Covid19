@@ -30,6 +30,19 @@
 
       <form action="login_scripts/register_script.php" method="post">
         <div class="input-group mb-3">
+          
+          <select class="form-control" name="usertype" id="">
+              <option value="visitor">Visitor</option>
+              <option value="employee">Employee</option>
+              <option value="student">Student</option>
+          </select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
           <input name="fullname" type="text" class="form-control" placeholder="Full name">
           <div class="input-group-append">
             <div class="input-group-text">
