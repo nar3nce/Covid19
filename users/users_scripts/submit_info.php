@@ -11,7 +11,7 @@ $age =  $conn->real_escape_string($_POST['age']);
 $citizenship =  $conn->real_escape_string($_POST['citizenship']);
 
 
-$sql = " UPDATE `user_informarion` SET `address` = '$address', `phone` = '$phone', `gender` = '$gender', `age` = '$age', `citizenship` = '$citizenship' WHERE `user_informarion`.`id` = '$id';
+$sql = " UPDATE `user_information` SET `address` = '$address', `phone` = '$phone', `gender` = '$gender', `age` = '$age', `citizenship` = '$citizenship' WHERE `user_information`.`id` = '$id';
 ";
 	$query = $conn->query($sql);
 	@header("location: ../information.php");
