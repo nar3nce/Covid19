@@ -112,12 +112,13 @@
                 user_information.citizenship FROM `visitors` 
                 LEFT JOIN users ON visitors.visitor_id = users.id
                 LEFT JOIN user_information ON visitors.visitor_id = user_information.user_id
-                WHERE date_visited = '$date_visited' and usertype = '$usertype'
+                WHERE date_visited LIKE '$date_visited%' and usertype = '$usertype'
                 GROUP BY visitors.visitor_id
                 ");
                 foreach($visitors as $visitors_){
+                  $date = date_create($visitors_['date_visited']);
                 ?>
-                      <td><?= $visitors_['date_visited'] ?></td>
+                      <td><?= date_format($date,"F j, Y H:i:s A");  ?></td>
                       <td><?= $visitors_['fullname'] ?></td>
                       <td><?= $visitors_['address'] ?></td>
                       <td><?= $visitors_['phone'] ?></td>
